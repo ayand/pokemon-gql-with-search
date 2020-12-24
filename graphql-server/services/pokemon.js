@@ -1,7 +1,11 @@
-const axios = require('axios');
+const resourceService = require('./common');
 
 function getPokemon(id) {
-    return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => res.data);
+    return resourceService.getResource(id, 'pokemon');
 }
 
-module.exports = { getPokemon };
+function getPokemons(id) {
+    return resourceService.getResources(id, 'pokemon');
+}
+
+module.exports = { getPokemon, getPokemons };

@@ -16,7 +16,7 @@ const EffectEntry = new GraphQLObjectType({
         id: {
             type: GraphQLID,
             resolve(parentValue, args) {
-                return parentValue.short_effect;
+                return parentValue.language.name;
             }
         },
         effect: { type: GraphQLString },

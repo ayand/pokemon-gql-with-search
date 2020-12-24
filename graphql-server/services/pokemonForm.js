@@ -1,7 +1,7 @@
-const axios = require('axios');
+const resourceService = require('./common');
 
 function getPokemonForm(id) {
-    return axios.get(`https://pokeapi.co/api/v2/pokemon-form/${id}`).then(res => res.data);
+    return resourceService.getResource('pokemon-form');
 }
 
 module.exports = { getPokemonForm };

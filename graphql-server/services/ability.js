@@ -1,13 +1,11 @@
-const axios = require('axios');
+const resourceService = require('./common');
 
 function getAbility(id) {
-    return axios.get(`https://pokeapi.co/api/v2/ability/${id}`).then(res => res.data);
+    return resourceService.getResource(id, 'ability');
 }
 
 function getAbilities(ids) {
-    const urls = ids.map(id => `https://pokeapi.co/api/v2/ability/${id}`);
-
-    return axios.all(urls).then(axios.spread((...responses) => responses));
+    return resourceService.getResources(id, 'ability');
 }
 
 module.exports = { getAbility, getAbilities };
