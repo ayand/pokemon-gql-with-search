@@ -43,6 +43,17 @@ const Pokemon = new GraphQLObjectType({
                 return SpeciesService.getSpecies(id);
             }
         },
+        sprite_back_default: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.back_default } },
+        sprite_back_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.back_female } },
+        sprite_back_shiny: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.back_shiny } },
+        sprite_back_shiny_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.back_shiny_female } },
+        sprite_front_default: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.front_default } },
+        sprite_front_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.front_female } },
+        sprite_front_shiny: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.front_shiny } },
+        sprite_front_shiny_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.front_shiny_female } },
+        sprite_dream_world_default: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.other.dream_world.front_default } },
+        sprite_dream_world_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.other.dream_world.front_female } },
+        sprite_official_artwork: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.other["official-artwork"].front_default } },
         stats: {
             type: new GraphQLList(Stat)
         },
