@@ -19,16 +19,16 @@ const TypeContainer = new GraphQLObjectType({
         id: {
           type: GraphQLID,
           resolve(parentValue, args) {
-              return parentValue.type.name;
+              const url = parentValue.type.url;
+              const components = url.split("/");
+              const id = components[components.length - 2];
+              return id;
           }
         },
-        type: {
-            type: Type,
+        name: {
+            type: GraphQLString,
             resolve(parentValue, args) {
-                const url = parentValue.type.url;
-                const components = url.split("/");
-                const id = components[components.length - 2];
-                return TypeService.getType(id);
+                return parentValue.type.name.toUpperCase().replace("-", " ");
             }
         },
         slot: { type: GraphQLInt }

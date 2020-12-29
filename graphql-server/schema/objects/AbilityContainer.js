@@ -19,16 +19,17 @@ const AbilityContainer = new GraphQLObjectType({
         id: {
           type: GraphQLID,
           resolve(parentValue, args) {
-              return parentValue.ability.name;
+              const url = parentValue.ability.url;
+              const components = url.split("/");
+              const id = components[components.length - 2];
+              return id;
+
           }
         },
-        ability: {
-            type: Ability,
+        name: {
+            type: GraphQLString,
             resolve(parentValue, args) {
-                const url = parentValue.ability.url;
-                const components = url.split("/");
-                const id = components[components.length - 2];
-                return AbilityService.getAbility(id);
+                return parentValue.ability.name.toUpperCase().replace("-", " ");
             }
         },
         is_hidden: { type: GraphQLBoolean },

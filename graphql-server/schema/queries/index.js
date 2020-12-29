@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLObjectType } = graphql;
 
-const { pokemon, pokemonSpecies } = require('./pokemon');
+const { pokemon, pokemonSpecies, pokemonForm } = require('./pokemon');
 const { ability } = require('./ability');
 const { type } = require('./type');
 const { move } = require('./move');
@@ -15,7 +15,8 @@ const RootQueryType = new GraphQLObjectType({
         ability,
         type,
         move,
-        moveDamageClass
+        moveDamageClass,
+        pokemonForm
     })
 });
 

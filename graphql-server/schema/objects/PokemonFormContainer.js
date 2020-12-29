@@ -19,16 +19,16 @@ const PokemonFormContainer = new GraphQLObjectType({
         id: {
           type: GraphQLID,
           resolve(parentValue, args) {
-              return parentValue.name;
+              const url = parentValue.url;
+              const components = url.split("/");
+              const id = components[components.length - 2];
+              return id;
           }
         },
-        form: {
-            type: PokemonForm,
+        name: {
+            type: GraphQLString,
             resolve(parentValue, args) {
-                const url = parentValue.url;
-                const components = url.split("/");
-                const id = components[components.length - 2];
-                return PokemonFormService.getPokemonForm(id);
+                return parentValue.name.toUpperCase().replace("-", " ");
             }
         }
     })
