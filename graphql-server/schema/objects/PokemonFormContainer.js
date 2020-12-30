@@ -10,9 +10,6 @@ const {
     GraphQLFloat
 } = graphql;
 
-const PokemonForm = require('./PokemonForm');
-const PokemonFormService = require('../../services/pokemonForm');
-
 const PokemonFormContainer = new GraphQLObjectType({
     name: 'PokemonFormContainer',
     fields: () => ({

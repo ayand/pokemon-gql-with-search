@@ -10,13 +10,16 @@ const {
     GraphQLFloat
 } = graphql;
 
-const TypeContainer = new GraphQLObjectType({
-    name: 'TypeContainer',
+const Type = require('./Type');
+const TypeService = require('../../services/type');
+
+const PokemonTypeContainer = new GraphQLObjectType({
+    name: 'PokemonTypeContainer',
     fields: () => ({
         id: {
           type: GraphQLID,
           resolve(parentValue, args) {
-              const url = parentValue.url;
+              const url = parentValue.type.url;
               const components = url.split("/");
               const id = components[components.length - 2];
               return id;
@@ -25,10 +28,11 @@ const TypeContainer = new GraphQLObjectType({
         name: {
             type: GraphQLString,
             resolve(parentValue, args) {
-                return parentValue.name.toUpperCase().replace("-", " ");
+                return parentValue.type.name.toUpperCase().replace("-", " ");
             }
-        }
+        },
+        slot: { type: GraphQLInt }
     })
 });
 
-module.exports = TypeContainer;
+module.exports = PokemonTypeContainer;

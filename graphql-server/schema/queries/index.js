@@ -6,6 +6,8 @@ const { ability } = require('./ability');
 const { type } = require('./type');
 const { move } = require('./move');
 const { moveDamageClass } = require('./moveDamageClass');
+const { generation } = require('./generation');
+const { region } = require('./region');
 
 const RootQueryType = new GraphQLObjectType({
     name: 'RootQuery',
@@ -16,7 +18,9 @@ const RootQueryType = new GraphQLObjectType({
         type,
         move,
         moveDamageClass,
-        pokemonForm
+        pokemonForm,
+        generation,
+        region
     })
 });
 

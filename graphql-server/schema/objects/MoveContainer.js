@@ -10,8 +10,8 @@ const {
     GraphQLFloat
 } = graphql;
 
-const TypeContainer = new GraphQLObjectType({
-    name: 'TypeContainer',
+const MoveContainer = new GraphQLObjectType({
+    name: 'MoveContainer',
     fields: () => ({
         id: {
           type: GraphQLID,
@@ -31,4 +31,4 @@ const TypeContainer = new GraphQLObjectType({
     })
 });
 
-module.exports = TypeContainer;
+module.exports = MoveContainer;

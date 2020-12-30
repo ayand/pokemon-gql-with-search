@@ -10,7 +10,7 @@ const {
     GraphQLFloat
 } = graphql;
 
-const AbilityContainer = require('./AbilityContainer');
+const PokemonAbilityContainer = require('./PokemonAbilityContainer');
 const PokemonFormContainer = require('./PokemonFormContainer');
 const PokemonSpecies = require('./PokemonSpecies');
 const Stat = require('./Stat');
@@ -21,7 +21,7 @@ const SpeciesService = require('../../services/species');
 const Pokemon = new GraphQLObjectType({
     name: 'Pokemon',
     fields: () => ({
-        abilities: { type: new GraphQLList(AbilityContainer) },
+        abilities: { type: new GraphQLList(PokemonAbilityContainer) },
         base_experience: { type: GraphQLInt },
         forms: { type: new GraphQLList(PokemonFormContainer) },
         height: { type: GraphQLFloat },
@@ -57,11 +57,11 @@ const Pokemon = new GraphQLObjectType({
         stats: {
             type: new GraphQLList(Stat)
         },
-        types: { type: new GraphQLList(TypeContainer) },
+        types: { type: new GraphQLList(PokemonTypeContainer) },
         weight: { type: GraphQLFloat }
     })
 });
 
 module.exports = Pokemon;
 
-const TypeContainer = require('./TypeContainer');
+const PokemonTypeContainer = require('./PokemonTypeContainer');
