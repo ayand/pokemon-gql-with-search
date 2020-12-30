@@ -22,7 +22,7 @@ const Region = new GraphQLObjectType({
       id: { type: GraphQLID },
       locations: { type: new GraphQLList(LocationContainer) },
       main_generation: { type: GenerationContainer },
-      name: { type: GraphQLString, resolve(parentValue, args, reg) { return parentValue.name.toUpperCase().replace("-", " "); } },
+      name: { type: GraphQLString, resolve(parentValue, args, reg) { return parentValue.name.toUpperCase().replace(/-/g, " "); } },
       names: { type: new GraphQLList(Name) },
       pokedexes: { type: new GraphQLList(PokedexContainer) },
       version_groups: { type: new GraphQLList(VersionGroupContainer) }

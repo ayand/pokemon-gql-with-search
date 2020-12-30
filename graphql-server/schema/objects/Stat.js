@@ -22,7 +22,7 @@ const Stat = new GraphQLObjectType({
         name: {
           type: GraphQLString,
           resolve(parentValue, args, res) {
-              return parentValue.stat.name.toUpperCase().replace("-", " ");
+              return parentValue.stat.name.toUpperCase().replace(/-/g, " ");
           }
         },
         value: {

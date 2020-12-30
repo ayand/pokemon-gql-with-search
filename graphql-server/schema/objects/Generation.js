@@ -25,7 +25,7 @@ const Generation = new GraphQLObjectType({
       id: { type: GraphQLID },
       main_region: { type: RegionContainer },
       moves: { type: new GraphQLList(MoveContainer) },
-      name: { type: GraphQLString, resolve(parentValue, args, reg) { return parentValue.name.toUpperCase().replace("-", " "); } },
+      name: { type: GraphQLString, resolve(parentValue, args, reg) { return parentValue.name.toUpperCase().replace(/-/g, " "); } },
       names: { type: new GraphQLList(Name) },
       pokemon_species: { type: new GraphQLList(SpeciesContainer) },
       types: { type: new GraphQLList(TypeContainer) },

@@ -30,7 +30,7 @@ const Pokemon = new GraphQLObjectType({
         name: {
           type: GraphQLString,
           resolve(parentValue, args, res) {
-              return parentValue.name.toUpperCase().replace("-", " ");
+              return parentValue.name.toUpperCase().replace(/-/g, " ");
           }
         },
         order: { type: GraphQLInt },

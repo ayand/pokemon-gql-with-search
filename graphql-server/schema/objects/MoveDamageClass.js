@@ -17,7 +17,7 @@ const MoveDamageClass = new GraphQLObjectType({
         name: {
           type: GraphQLString,
           resolve(parentValue, args, res) {
-              return parentValue.name.toUpperCase().replace("-", " ");
+              return parentValue.name.toUpperCase().replace(/-/g, " ");
           }
         }
     })

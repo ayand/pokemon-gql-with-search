@@ -29,7 +29,7 @@ const PokemonAbilityContainer = new GraphQLObjectType({
         name: {
             type: GraphQLString,
             resolve(parentValue, args) {
-                return parentValue.ability.name.toUpperCase().replace("-", " ");
+                return parentValue.ability.name.toUpperCase().replace(/-/g, " ");
             }
         },
         is_hidden: { type: GraphQLBoolean },

@@ -9,7 +9,7 @@ const { moveDamageClass } = require('./moveDamageClass');
 const { generation } = require('./generation');
 const { region } = require('./region');
 const { location } = require('./location');
-
+const { moveLearnMethod } = require('./moveLearnMethod');
 
 const RootQueryType = new GraphQLObjectType({
     name: 'RootQuery',
@@ -23,7 +23,8 @@ const RootQueryType = new GraphQLObjectType({
         pokemonForm,
         generation,
         region,
-        location
+        location,
+        moveLearnMethod
     })
 });
 

@@ -28,7 +28,7 @@ const PokemonTypeContainer = new GraphQLObjectType({
         name: {
             type: GraphQLString,
             resolve(parentValue, args) {
-                return parentValue.type.name.toUpperCase().replace("-", " ");
+                return parentValue.type.name.toUpperCase().replace(/-/g, " ");
             }
         },
         slot: { type: GraphQLInt }

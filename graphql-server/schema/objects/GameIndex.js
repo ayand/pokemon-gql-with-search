@@ -15,7 +15,7 @@ const GameIndex = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID, resolve(parentValue, args, res) { return parentValue.game_index; } },
         game_index: { type: GraphQLInt },
-        generation_name: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.generation.name.toUpperCase().replace("-", " "); } },
+        generation_name: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.generation.name.toUpperCase().replace(/-/g, " "); } },
         generation_id: {
           type: GraphQLInt,
           resolve(parentValue, args, res) {
