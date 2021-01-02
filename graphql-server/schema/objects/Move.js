@@ -12,7 +12,7 @@ const {
 
 const EffectEntry = require('./EffectEntry');
 const Type = require('./Type');
-const MoveDamageClass = require('./MoveDamageClass');
+const MoveDamageClassContainer = require('./MoveDamageClassContainer');
 
 const TypeService = require('../../services/type');
 const MoveDamageClassService = require('../../services/moveDamageClass');
@@ -23,13 +23,7 @@ const Move = new GraphQLObjectType({
         id: { type: GraphQLID },
         accuracy: { type: GraphQLInt },
         damage_class: {
-            type: MoveDamageClass,
-            resolve(parentValue, args, res) {
-                const url = parentValue.damage_class.url;
-                const components = url.split("/");
-                const id = components[components.length - 2];
-                return MoveDamageClassService.getMoveDamageClass(id);
-            }
+            type: MoveDamageClassContainer,
         },
         effect_entries: { type: new GraphQLList(EffectEntry) },
         name: {
