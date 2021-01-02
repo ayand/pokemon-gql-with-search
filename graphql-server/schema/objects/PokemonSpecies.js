@@ -14,6 +14,7 @@ module.exports.PokemonSpecies = new GraphQLObjectType({
     name: 'PokemonSpecies',
     fields: () => {
       const SpeciesContainer = require('./SpeciesContainer').SpeciesContainer;
+      const SpeciesVariety = require('./SpeciesVariety').SpeciesVariety;
       const SpeciesService = require('../../services/species');
 
       return {
@@ -37,6 +38,9 @@ module.exports.PokemonSpecies = new GraphQLObjectType({
             }
           },
           order: { type: GraphQLInt },
+          varieties: {
+              type: new GraphQLList(SpeciesVariety)
+          }
       }
     }
 });
