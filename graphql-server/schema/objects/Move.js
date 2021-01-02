@@ -10,19 +10,12 @@ const {
     GraphQLFloat
 } = graphql;
 
-const EffectEntry = require('./EffectEntry');
-const Type = require('./Type');
-const MoveDamageClassContainer = require('./MoveDamageClassContainer');
-
-const TypeService = require('../../services/type');
-const MoveDamageClassService = require('../../services/moveDamageClass');
-
 module.exports.Move = new GraphQLObjectType({
     name: 'Move',
     fields: () => {
-      const EffectEntry = require('./EffectEntry').EffectEntry;
-      const Type = require('./Type').Type;
-      const MoveDamageClassContainer = require('./MoveDamageClassContainer').MoveDamageClassContainer;
+      const {EffectEntry} = require('./EffectEntry');
+      const {Type} = require('./Type');
+      const {MoveDamageClassContainer} = require('./MoveDamageClassContainer');
 
       const TypeService = require('../../services/type');
       const MoveDamageClassService = require('../../services/moveDamageClass');

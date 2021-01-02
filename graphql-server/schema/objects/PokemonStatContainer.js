@@ -13,7 +13,7 @@ const {
 module.exports.PokemonStatContainer = new GraphQLObjectType({
     name: 'PokemonStatContainer',
     fields: () => {
-      const StatContainer = require('./StatContainer').StatContainer;
+      const {StatContainer} = require('./StatContainer');
       return {
           id: { type: GraphQLID, resolve(parentValue) { return parentValue.stat.name; } },
           base_stat: { type: GraphQLInt },

@@ -13,9 +13,9 @@ const {
 module.exports.MoveLearnMethod = new GraphQLObjectType({
     name: 'MoveLearnMethod',
     fields: () => {
-      const Description = require('./Description').Description;
-      const Name = require('./Name').Name;
-      const VersionGroupContainer = require('./VersionGroupContainer').VersionGroupContainer;
+      const {Description} = require('./Description');
+      const {Name} = require('./Name');
+      const {VersionGroupContainer} = require('./VersionGroupContainer');
 
       return {
           id: { type: GraphQLID },

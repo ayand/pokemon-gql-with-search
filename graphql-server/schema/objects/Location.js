@@ -14,10 +14,10 @@ const {
 module.exports.Location = new GraphQLObjectType({
     name: 'Location',
     fields: () => {
-      const LocationAreaContainer = require('./LocationAreaContainer').LocationAreaContainer;
-      const GameIndex = require('./GameIndex').GameIndex;
-      const Name = require('./Name').Name;
-      const RegionContainer = require('./RegionContainer').RegionContainer;
+      const {LocationAreaContainer} = require('./LocationAreaContainer');
+      const {GameIndex} = require('./GameIndex');
+      const {Name} = require('./Name');
+      const {RegionContainer} = require('./RegionContainer');
 
       return {
           game_indices: { type: new GraphQLList(GameIndex) },

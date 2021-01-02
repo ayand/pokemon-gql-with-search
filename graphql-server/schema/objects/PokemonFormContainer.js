@@ -13,7 +13,7 @@ const {
 module.exports.PokemonFormContainer = new GraphQLObjectType({
     name: 'PokemonFormContainer',
     fields: () => {
-      const PokemonForm = require('./PokemonForm').PokemonForm;
+      const {PokemonForm} = require('./PokemonForm');
       const PokemonFormService = require('../../services/pokemonForm');
       return {
           id: {

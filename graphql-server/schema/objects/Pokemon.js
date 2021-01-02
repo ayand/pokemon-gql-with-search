@@ -13,11 +13,11 @@ const {
 module.exports.Pokemon = new GraphQLObjectType({
     name: 'Pokemon',
     fields: () => {
-      const PokemonAbilityContainer = require('./PokemonAbilityContainer').PokemonAbilityContainer;
-      const PokemonFormContainer = require('./PokemonFormContainer').PokemonFormContainer;
-      const SpeciesContainer = require('./SpeciesContainer').SpeciesContainer;
-      const PokemonStatContainer = require('./PokemonStatContainer').PokemonStatContainer;
-      const PokemonTypeContainer = require('./PokemonTypeContainer').PokemonTypeContainer;
+      const {PokemonAbilityContainer} = require('./PokemonAbilityContainer');
+      const {PokemonFormContainer} = require('./PokemonFormContainer');
+      const {SpeciesContainer} = require('./SpeciesContainer');
+      const {PokemonStatContainer} = require('./PokemonStatContainer');
+      const {PokemonTypeContainer} = require('./PokemonTypeContainer');
       const {PokemonMoveContainer} = require('./PokemonMoveContainer')
 
       const PokemonService = require('../../services/pokemon');

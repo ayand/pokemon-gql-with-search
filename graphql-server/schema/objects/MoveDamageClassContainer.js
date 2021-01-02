@@ -13,7 +13,7 @@ const {
 module.exports.MoveDamageClassContainer = new GraphQLObjectType({
     name: 'MoveDamageClassContainer',
     fields: () => {
-      const MoveDamageClass = require('./MoveDamageClass').MoveDamageClass;
+      const {MoveDamageClass} = require('./MoveDamageClass');
       const MoveDamageClassService = require('../../services/moveDamageClass');
 
       return {

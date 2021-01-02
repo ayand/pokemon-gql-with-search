@@ -13,7 +13,7 @@ const {
 module.exports.StatContainer = new GraphQLObjectType({
     name: 'StatContainer',
     fields: () => {
-      const Stat = require('./Stat').Stat;
+      const {Stat} = require('./Stat');
       const StatService = require('../../services/Stat');
 
       return {

@@ -13,9 +13,9 @@ const {
 module.exports.Type = new GraphQLObjectType({
     name: 'Type',
     fields: () => {
-      const PokemonContainer = require('./PokemonContainer').PokemonContainer;
-      const MoveDamageClass = require('./MoveDamageClass').MoveDamageClass;
-      const TypeContainer = require('./TypeContainer').TypeContainer;
+      const {PokemonContainer} = require('./PokemonContainer');
+      const {MoveDamageClass} = require('./MoveDamageClass');
+      const {TypeContainer} = require('./TypeContainer');
 
       const PokemonService = require('../../services/pokemon');
       const TypeService = require('../../services/type');

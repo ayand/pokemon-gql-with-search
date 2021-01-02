@@ -13,7 +13,7 @@ const {
 module.exports.PokemonTypeContainer = new GraphQLObjectType({
     name: 'PokemonTypeContainer',
     fields: () => {
-      const Type = require('./Type').Type;
+      const {Type} = require('./Type');
       const TypeService = require('../../services/type');
 
       return {

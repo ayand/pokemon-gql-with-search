@@ -15,13 +15,13 @@ const {
 module.exports.Generation = new GraphQLObjectType({
     name: 'Generation',
     fields: () => {
-      const AbilityContainer = require('./AbilityContainer').AbilityContainer;
-      const MoveContainer = require('./MoveContainer').MoveContainer;
-      const TypeContainer = require('./TypeContainer').TypeContainer;
-      const SpeciesContainer = require('./SpeciesContainer').SpeciesContainer;
-      const Name = require('./Name').Name;
-      const VersionGroupContainer = require('./VersionGroupContainer').VersionGroupContainer;
-      const RegionContainer = require('./RegionContainer').RegionContainer;
+      const {AbilityContainer} = require('./AbilityContainer');
+      const {MoveContainer} = require('./MoveContainer');
+      const {TypeContainer} = require('./TypeContainer');
+      const {SpeciesContainer} = require('./SpeciesContainer');
+      const {Name} = require('./Name');
+      const {VersionGroupContainer} = require('./VersionGroupContainer');
+      const {RegionContainer} = require('./RegionContainer');
 
       return {
         abilities: { type: new GraphQLList(AbilityContainer) },

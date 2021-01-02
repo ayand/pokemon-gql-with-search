@@ -13,7 +13,7 @@ const {
 module.exports.Stat = new GraphQLObjectType({
     name: 'Stat',
     fields: () => {
-      const Name = require('./Name').Name;
+      const {Name} = require('./Name');
       return {
           id: { type: GraphQLID },
           name: {

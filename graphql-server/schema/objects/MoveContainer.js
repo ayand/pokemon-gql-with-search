@@ -13,7 +13,7 @@ const {
 module.exports.MoveContainer = new GraphQLObjectType({
     name: 'MoveContainer',
     fields: () => {
-      const Move = require('./Move').Move;
+      const {Move} = require('./Move');
       const MoveService = require('../../services/move');
       return {
           id: {

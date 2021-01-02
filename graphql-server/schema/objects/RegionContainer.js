@@ -13,7 +13,7 @@ const {
 module.exports.RegionContainer = new GraphQLObjectType({
     name: 'RegionContainer',
     fields: () => {
-      const Region = require('./Region').Region;
+      const {Region} = require('./Region');
       const RegionService = require('../../services/region');
       return {
           id: {

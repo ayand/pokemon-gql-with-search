@@ -13,7 +13,7 @@ const {
 module.exports.LocationContainer = new GraphQLObjectType({
     name: 'LocationContainer',
     fields: () => {
-      const Location = require('./Location').Location;
+      const {Location} = require('./Location').Location;
       const LocationService = require('../../services/location');
 
       return {

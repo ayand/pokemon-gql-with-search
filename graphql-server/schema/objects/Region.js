@@ -13,11 +13,11 @@ const {
 module.exports.Region = new GraphQLObjectType({
     name: 'Region',
     fields: () => {
-      const Name = require('./Name').Name;
-      const VersionGroupContainer = require('./VersionGroupContainer').VersionGroupContainer;
-      const LocationContainer = require('./LocationContainer').LocationContainer;
-      const GenerationContainer = require('./GenerationContainer').GenerationContainer;
-      const PokedexContainer = require('./PokedexContainer').PokedexContainer;
+      const {Name} = require('./Name');
+      const {VersionGroupContainer} = require('./VersionGroupContainer');
+      const {LocationContainer} = require('./LocationContainer');
+      const {GenerationContainer} = require('./GenerationContainer');
+      const {PokedexContainer} = require('./PokedexContainer');
 
       return {
         id: { type: GraphQLID },

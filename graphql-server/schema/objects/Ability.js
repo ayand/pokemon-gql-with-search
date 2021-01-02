@@ -13,7 +13,7 @@ const {
 module.exports.Ability = new GraphQLObjectType({
     name: 'Ability',
     fields: () => {
-        const EffectEntry = require('./EffectEntry').EffectEntry;
+        const {EffectEntry} = require('./EffectEntry');
         return {
           effect_entries: { type: new GraphQLList(EffectEntry) },
           id: { type: GraphQLID },

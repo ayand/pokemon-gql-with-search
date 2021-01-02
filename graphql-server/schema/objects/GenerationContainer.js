@@ -13,7 +13,7 @@ const {
 module.exports.GenerationContainer = new GraphQLObjectType({
     name: 'GenerationContainer',
     fields: () => {
-      const Generation = require('./Generation').Generation;
+      const {Generation} = require('./Generation');
       const GenerationService = require('../../services/generation');
       return {
           id: {

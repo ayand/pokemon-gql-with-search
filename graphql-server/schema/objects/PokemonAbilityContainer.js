@@ -13,7 +13,7 @@ const {
 module.exports.PokemonAbilityContainer = new GraphQLObjectType({
     name: 'PokemonAbilityContainer',
     fields: () => {
-      const Ability = require('./Ability').Ability;
+      const {Ability} = require('./Ability');
       const AbilityService = require('../../services/ability');
 
       return {
