@@ -12,7 +12,7 @@ const {
 
 const PokemonAbilityContainer = require('./PokemonAbilityContainer');
 const PokemonFormContainer = require('./PokemonFormContainer');
-const PokemonSpecies = require('./PokemonSpecies');
+const SpeciesContainer = require('./SpeciesContainer');
 const PokemonStatContainer = require('./PokemonStatContainer');
 
 const PokemonService = require('../../services/pokemon');
@@ -35,13 +35,7 @@ const Pokemon = new GraphQLObjectType({
         },
         order: { type: GraphQLInt },
         species: {
-            type: PokemonSpecies,
-            resolve(parentValue, args, res) {
-                const url = parentValue.species.url;
-                const components = url.split("/");
-                const id = components[components.length - 2];
-                return SpeciesService.getSpecies(id);
-            }
+            type: SpeciesContainer,
         },
         sprite_back_default: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.back_default } },
         sprite_back_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.back_female } },
