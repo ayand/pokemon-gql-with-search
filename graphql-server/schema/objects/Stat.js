@@ -13,31 +13,19 @@ const {
 const Stat = new GraphQLObjectType({
     name: 'Stat',
     fields: () => ({
-        id: {
-          type: GraphQLID,
-          resolve(parentValue, args, res) {
-              return parentValue.stat.name;
-          }
-        },
+        id: { type: GraphQLID },
         name: {
           type: GraphQLString,
           resolve(parentValue, args, res) {
-              return parentValue.stat.name.toUpperCase().replace(/-/g, " ");
+              return parentValue.name.toUpperCase().replace(/-/g, " ");
           }
         },
-        value: {
-            type: GraphQLInt,
-            resolve(parentValue, args, res) {
-                return parentValue.base_stat;
-            }
-        },
-        effort: {
-            type: GraphQLInt,
-            resolve(parentValue, args, res) {
-                return parentValue.effort;
-            }
-        }
+        names: { type: new GraphQLList(Name) },
+        game_index: { type: GraphQLInt },
+        is_battle_only: { type: GraphQLBoolean }
     })
 })
+
+const Name = require('./Name');
 
 module.exports = Stat;

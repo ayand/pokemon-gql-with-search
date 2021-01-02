@@ -13,7 +13,7 @@ const {
 const PokemonAbilityContainer = require('./PokemonAbilityContainer');
 const PokemonFormContainer = require('./PokemonFormContainer');
 const PokemonSpecies = require('./PokemonSpecies');
-const Stat = require('./Stat');
+const PokemonStatContainer = require('./PokemonStatContainer');
 
 const PokemonService = require('../../services/pokemon');
 const SpeciesService = require('../../services/species');
@@ -55,7 +55,7 @@ const Pokemon = new GraphQLObjectType({
         sprite_dream_world_female: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.other.dream_world.front_female } },
         sprite_official_artwork: { type: GraphQLString, resolve(parentValue, args, res) { return parentValue.sprites.other["official-artwork"].front_default } },
         stats: {
-            type: new GraphQLList(Stat)
+            type: new GraphQLList(PokemonStatContainer)
         },
         types: { type: new GraphQLList(PokemonTypeContainer) },
         weight: { type: GraphQLFloat }
