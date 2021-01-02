@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLID, GraphQLInt, GraphQLList, GraphQLString } = graphql;
 
-const Generation = require('../objects/Generation');
+const {Generation} = require('../objects/Generation');
 
 const GenerationService = require('../../services/generation');
 

@@ -10,31 +10,32 @@ const {
     GraphQLFloat
 } = graphql;
 
-const LocationAreaContainer = require('./LocationAreaContainer');
-const GameIndex = require('./GameIndex');
-const Name = require('./Name');
-const RegionContainer = require('./RegionContainer');
 
-const Location = new GraphQLObjectType({
+module.exports.Location = new GraphQLObjectType({
     name: 'Location',
-    fields: () => ({
-        game_indices: { type: new GraphQLList(GameIndex) },
-        id: { type: GraphQLID },
-        location_areas: {
-            type: new GraphQLList(LocationAreaContainer),
-            resolve(parentValue, args) {
-                return parentValue.areas;
-            }
-        },
-        name: {
-            type: GraphQLString,
-            resolve(parentValue, args) {
-                return parentValue.name.toUpperCase().replace(/-/g, " ");
-            }
-        },
-        names: { type: new GraphQLList(Name) },
-        region: { type: RegionContainer }
-    })
-})
+    fields: () => {
+      const LocationAreaContainer = require('./LocationAreaContainer').LocationAreaContainer;
+      const GameIndex = require('./GameIndex').GameIndex;
+      const Name = require('./Name').Name;
+      const RegionContainer = require('./RegionContainer').RegionContainer;
 
-module.exports = Location;
+      return {
+          game_indices: { type: new GraphQLList(GameIndex) },
+          id: { type: GraphQLID },
+          location_areas: {
+              type: new GraphQLList(LocationAreaContainer),
+              resolve(parentValue, args) {
+                  return parentValue.areas;
+              }
+          },
+          name: {
+              type: GraphQLString,
+              resolve(parentValue, args) {
+                  return parentValue.name.toUpperCase().replace(/-/g, " ");
+              }
+          },
+          names: { type: new GraphQLList(Name) },
+          region: { type: RegionContainer }
+      }
+    }
+})

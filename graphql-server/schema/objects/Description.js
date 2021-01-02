@@ -10,13 +10,13 @@ const {
     GraphQLFloat
 } = graphql;
 
-const Description = new GraphQLObjectType({
+module.exports.Description = new GraphQLObjectType({
     name: 'Description',
-    fields: () => ({
-        id: { type: GraphQLID, resolve(parentValue, args) { return parentValue.language.name; } },
-        language: { type: GraphQLString, resolve(parentValue, args) { return parentValue.language.name; } },
-        description: { type: GraphQLString }
-    })
+    fields: () => {
+        return {
+            id: { type: GraphQLID, resolve(parentValue, args) { return parentValue.language.name; } },
+            language: { type: GraphQLString, resolve(parentValue, args) { return parentValue.language.name; } },
+            description: { type: GraphQLString }
+        }
+    }
 })
-
-module.exports = Description;

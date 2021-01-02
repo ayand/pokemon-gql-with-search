@@ -10,16 +10,15 @@ const {
     GraphQLFloat
 } = graphql;
 
-const PokemonStatContainer = new GraphQLObjectType({
+module.exports.PokemonStatContainer = new GraphQLObjectType({
     name: 'PokemonStatContainer',
-    fields: () => ({
-        id: { type: GraphQLID, resolve(parentValue) { return parentValue.stat.name; } },
-        base_stat: { type: GraphQLInt },
-        effort: { type: GraphQLInt },
-        stat: { type: StatContainer }
-    })
+    fields: () => {
+      const StatContainer = require('./StatContainer').StatContainer;
+      return {
+          id: { type: GraphQLID, resolve(parentValue) { return parentValue.stat.name; } },
+          base_stat: { type: GraphQLInt },
+          effort: { type: GraphQLInt },
+          stat: { type: StatContainer }
+      }
+    }
 })
-
-const StatContainer = require('./StatContainer');
-
-module.exports = PokemonStatContainer;

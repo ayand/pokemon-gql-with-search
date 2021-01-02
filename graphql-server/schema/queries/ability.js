@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLID, GraphQLInt, GraphQLList, GraphQLString } = graphql;
 
-const Ability = require('../objects/Ability');
+const {Ability} = require('../objects/Ability');
 
 const AbilityService = require('../../services/ability');
 

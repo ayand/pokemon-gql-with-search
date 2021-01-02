@@ -10,37 +10,37 @@ const {
     GraphQLFloat
 } = graphql;
 
-const StatContainer = new GraphQLObjectType({
+module.exports.StatContainer = new GraphQLObjectType({
     name: 'StatContainer',
-    fields: () => ({
-        id: {
-          type: GraphQLID,
-          resolve(parentValue, args) {
-              const url = parentValue.url;
-              const components = url.split("/");
-              const id = components[components.length - 2];
-              return id;
-          }
-        },
-        name: {
-            type: GraphQLString,
-            resolve(parentValue, args) {
-                return parentValue.name.toUpperCase().replace(/-/g, " ");
-            }
-        },
-        stat: {
-            type: Stat,
+    fields: () => {
+      const Stat = require('./Stat').Stat;
+      const StatService = require('../../services/Stat');
+
+      return {
+          id: {
+            type: GraphQLID,
             resolve(parentValue, args) {
                 const url = parentValue.url;
                 const components = url.split("/");
                 const id = components[components.length - 2];
-                return StatService.getStat(id);
+                return id;
             }
-        }
-    })
+          },
+          name: {
+              type: GraphQLString,
+              resolve(parentValue, args) {
+                  return parentValue.name.toUpperCase().replace(/-/g, " ");
+              }
+          },
+          stat: {
+              type: Stat,
+              resolve(parentValue, args) {
+                  const url = parentValue.url;
+                  const components = url.split("/");
+                  const id = components[components.length - 2];
+                  return StatService.getStat(id);
+              }
+          }
+      }
+    }
 })
-
-const Stat = require('./Stat');
-const StatService = require('../../services/Stat');
-
-module.exports = StatContainer;

@@ -10,31 +10,31 @@ const {
     GraphQLFloat
 } = graphql;
 
-const Ability = require('./Ability');
-const AbilityService = require('../../services/ability');
-
-const PokemonAbilityContainer = new GraphQLObjectType({
+module.exports.PokemonAbilityContainer = new GraphQLObjectType({
     name: 'PokemonAbilityContainer',
-    fields: () => ({
-        id: {
-          type: GraphQLID,
-          resolve(parentValue, args) {
-              const url = parentValue.ability.url;
-              const components = url.split("/");
-              const id = components[components.length - 2];
-              return id;
+    fields: () => {
+      const Ability = require('./Ability').Ability;
+      const AbilityService = require('../../services/ability');
 
-          }
-        },
-        name: {
-            type: GraphQLString,
+      return {
+          id: {
+            type: GraphQLID,
             resolve(parentValue, args) {
-                return parentValue.ability.name.toUpperCase().replace(/-/g, " ");
-            }
-        },
-        is_hidden: { type: GraphQLBoolean },
-        slot: { type: GraphQLInt }
-    })
-});
+                const url = parentValue.ability.url;
+                const components = url.split("/");
+                const id = components[components.length - 2];
+                return id;
 
-module.exports = PokemonAbilityContainer;
+            }
+          },
+          name: {
+              type: GraphQLString,
+              resolve(parentValue, args) {
+                  return parentValue.ability.name.toUpperCase().replace(/-/g, " ");
+              }
+          },
+          is_hidden: { type: GraphQLBoolean },
+          slot: { type: GraphQLInt }
+      }
+    }
+});

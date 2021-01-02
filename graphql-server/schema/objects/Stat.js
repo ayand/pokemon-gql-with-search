@@ -10,22 +10,21 @@ const {
     GraphQLFloat
 } = graphql;
 
-const Stat = new GraphQLObjectType({
+module.exports.Stat = new GraphQLObjectType({
     name: 'Stat',
-    fields: () => ({
-        id: { type: GraphQLID },
-        name: {
-          type: GraphQLString,
-          resolve(parentValue, args, res) {
-              return parentValue.name.toUpperCase().replace(/-/g, " ");
-          }
-        },
-        names: { type: new GraphQLList(Name) },
-        game_index: { type: GraphQLInt },
-        is_battle_only: { type: GraphQLBoolean }
-    })
+    fields: () => {
+      const Name = require('./Name').Name;
+      return {
+          id: { type: GraphQLID },
+          name: {
+            type: GraphQLString,
+            resolve(parentValue, args, res) {
+                return parentValue.name.toUpperCase().replace(/-/g, " ");
+            }
+          },
+          names: { type: new GraphQLList(Name) },
+          game_index: { type: GraphQLInt },
+          is_battle_only: { type: GraphQLBoolean }
+      }
+    }
 })
-
-const Name = require('./Name');
-
-module.exports = Stat;

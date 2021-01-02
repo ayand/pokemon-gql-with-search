@@ -10,17 +10,17 @@ const {
     GraphQLFloat
 } = graphql;
 
-const MoveDamageClass = new GraphQLObjectType({
+module.exports.MoveDamageClass = new GraphQLObjectType({
     name: 'MoveDamageClass',
-    fields: () => ({
-        id: { type: GraphQLID },
-        name: {
-          type: GraphQLString,
-          resolve(parentValue, args, res) {
-              return parentValue.name.toUpperCase().replace(/-/g, " ");
+    fields: () => {
+      return {
+          id: { type: GraphQLID },
+          name: {
+            type: GraphQLString,
+            resolve(parentValue, args, res) {
+                return parentValue.name.toUpperCase().replace(/-/g, " ");
+            }
           }
-        }
-    })
+      }
+    }
 });
-
-module.exports = MoveDamageClass;

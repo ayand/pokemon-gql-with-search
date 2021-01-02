@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLID, GraphQLInt, GraphQLList, GraphQLString } = graphql;
 
-const Stat = require('../objects/Stat');
+const {Stat} = require('../objects/Stat');
 
 const StatService = require('../../services/stat');
 

@@ -10,18 +10,18 @@ const {
     GraphQLFloat
 } = graphql;
 
-const EffectEntry = new GraphQLObjectType({
+module.exports.EffectEntry = new GraphQLObjectType({
     name: 'EffectEntry',
-    fields: () => ({
-        id: {
-            type: GraphQLID,
-            resolve(parentValue, args) {
-                return parentValue.language.name;
-            }
-        },
-        effect: { type: GraphQLString },
-        short_effect: { type: GraphQLString }
-    })
+    fields: () => {
+        return {
+            id: {
+                type: GraphQLID,
+                resolve(parentValue, args) {
+                    return parentValue.language.name;
+                }
+            },
+            effect: { type: GraphQLString },
+            short_effect: { type: GraphQLString }
+        }
+    }
 });
-
-module.exports = EffectEntry;

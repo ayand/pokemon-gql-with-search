@@ -10,25 +10,37 @@ const {
     GraphQLFloat
 } = graphql;
 
-const AbilityContainer = new GraphQLObjectType({
+module.exports.AbilityContainer = new GraphQLObjectType({
     name: 'AbilityContainer',
-    fields: () => ({
-        id: {
-          type: GraphQLID,
-          resolve(parentValue, args) {
-              const url = parentValue.url;
-              const components = url.split("/");
-              const id = components[components.length - 2];
-              return id;
-          }
-        },
-        name: {
-            type: GraphQLString,
-            resolve(parentValue, args) {
-                return parentValue.name.toUpperCase().replace(/-/g, " ");
-            }
-        }
-    })
-});
+    fields: () => {
+      const Ability = require('./Ability').Ability;
+      const AbilityService = require('../../services/ability');
 
-module.exports = AbilityContainer;
+      return {
+          id: {
+            type: GraphQLID,
+            resolve(parentValue, args) {
+                const url = parentValue.url;
+                const components = url.split("/");
+                const id = components[components.length - 2];
+                return id;
+            }
+          },
+          name: {
+              type: GraphQLString,
+              resolve(parentValue, args) {
+                  return parentValue.name.toUpperCase().replace(/-/g, " ");
+              }
+          },
+          ability: {
+              type: Ability,
+              resolve(parentValue) {
+                  const url = parentValue.url;
+                  const components = url.split("/");
+                  const id = components[components.length - 2];
+                  return AbilityService.getAbility(id);
+              }
+          }
+      }
+    }
+});

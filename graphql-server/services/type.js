@@ -5,7 +5,7 @@ function getType(id) {
 }
 
 function getTypes(ids) {
-    return resourceService.getResources(id, 'type');
+    return resourceService.getResources(ids, 'type');
 }
 
 

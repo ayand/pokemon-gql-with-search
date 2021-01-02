@@ -1,9 +1,9 @@
 const graphql = require('graphql');
 const { GraphQLID, GraphQLInt, GraphQLList, GraphQLString } = graphql;
 
-const Pokemon = require('../objects/Pokemon');
-const PokemonSpecies = require('../objects/PokemonSpecies');
-const PokemonForm = require('../objects/PokemonForm');
+const {Pokemon} = require('../objects/Pokemon');
+const {PokemonSpecies} = require('../objects/PokemonSpecies');
+const {PokemonForm} = require('../objects/PokemonForm');
 
 const PokemonService = require('../../services/pokemon');
 const SpeciesService = require('../../services/species');

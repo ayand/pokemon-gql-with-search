@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLID, GraphQLInt, GraphQLList, GraphQLString } = graphql;
 
-const Region = require('../objects/Region');
+const {Region} = require('../objects/Region');
 
 const RegionService = require('../../services/region');
 

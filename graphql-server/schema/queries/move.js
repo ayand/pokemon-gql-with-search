@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLID, GraphQLInt, GraphQLList, GraphQLString } = graphql;
 
-const Move = require('../objects/Move');
+const {Move} = require('../objects/Move');
 
 const MoveService = require('../../services/move');
 
