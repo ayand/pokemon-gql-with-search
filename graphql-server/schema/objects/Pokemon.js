@@ -18,6 +18,7 @@ module.exports.Pokemon = new GraphQLObjectType({
       const SpeciesContainer = require('./SpeciesContainer').SpeciesContainer;
       const PokemonStatContainer = require('./PokemonStatContainer').PokemonStatContainer;
       const PokemonTypeContainer = require('./PokemonTypeContainer').PokemonTypeContainer;
+      const {PokemonMoveContainer} = require('./PokemonMoveContainer')
 
       const PokemonService = require('../../services/pokemon');
       const SpeciesService = require('../../services/species');
@@ -29,6 +30,7 @@ module.exports.Pokemon = new GraphQLObjectType({
           height: { type: GraphQLFloat },
           id: { type: GraphQLID },
           is_default: { type: GraphQLBoolean },
+          moves: { type: new GraphQLList(PokemonMoveContainer) },
           name: {
             type: GraphQLString,
             resolve(parentValue, args, res) {
