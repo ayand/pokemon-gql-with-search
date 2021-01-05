@@ -24,10 +24,13 @@ while len(pokemons) != pokemon_total_count:
             stat_val = stat["base_stat"]
             datum[stat_name] = stat_val
         datum["species"] = pokemon['species']['url'].split("/")[-2]
+        for type in pokemon["types"]:
+            datum["type" + str(type["slot"])] = type["type"]["name"].upper()
+        if len(pokemon["types"]) == 1:
+            datum["type2"] = None
         pokemons.append(datum)
         print("Done with Pokemon # {}".format(i))
     offset += 100
-
 
 with open("./data/pokemon.json", "w") as outFile:
     json.dump(pokemons, outFile, indent=2)
