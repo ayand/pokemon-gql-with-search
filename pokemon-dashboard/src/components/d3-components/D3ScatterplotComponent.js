@@ -1,17 +1,17 @@
 import * as d3 from 'd3';
-import d3Tip from "d3-tip";
-import '../css/d3-tip.css';
+import { tip as d3Tip } from "d3-v6-tip";
 
 class D3ScatterplotComponent {
     constructor(element, props) {
-        console.log("ELEMENT:");
-        console.log(element);
+        // console.log("ELEMENT:");
+        // console.log(element);
         this.svg = d3.select(element);
-
-        this.tip = d3Tip().attr("class", "d3-tip").html(function(d) {
+        // console.log(props.pokemon);
+        //
+        this.tip = d3Tip().attr("class", "d3-tip").html(function(event, d) {
             return `
               <div style="text-align:center">
-                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${d.api_id}.png" height="75"/>
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${d.id}.png" height="75"/>
                   <h6>${d.name}</h6>
               </div>
               `
@@ -53,31 +53,29 @@ class D3ScatterplotComponent {
         }
 
         this.svg.selectAll(".dot")
-            .data(props.pokemon, d => d.api_id.toString())
+            .data(props.pokemon, d => d.id)
             .enter().append("circle")
             .attr("class", "dot")
             .attr("fill", "green")
             .attr("r", 5)
             .attr("cx", d => this.statData[props.xStat]["xScale"](d[this.statData[props.xStat]["field"]]))
             .attr("cy", d => this.statData[props.yStat]["yScale"](d[this.statData[props.yStat]["field"]]))
-            .style("cursor", "pointer")
             .style("stroke", "black")
             .style("opacity", 0.4)
             .style("display", function(d) {
                 let condition = true;
                 if (props.includedTypes.length === 2) {
-                    condition = props.includedTypes.includes(d.type_1) && props.includedTypes.includes(d.type_2);
+                    condition = props.includedTypes.includes(d.type1) && props.includedTypes.includes(d.type2);
                 } else if (props.includedTypes.length === 1) {
-                    condition = props.includedTypes.includes(d.type_1) || props.includedTypes.includes(d.type_2);
+                    condition = props.includedTypes.includes(d.type1) || props.includedTypes.includes(d.type2);
                 }
                 if (props.oneType === true) {
-                    condition = condition && d.type_2 === "None";
+                    condition = condition && d.type2 === "None";
                 }
                 return condition ? "block" : "none";
             })
             .on("mouseover", this.tip.show)
             .on("mouseout", this.tip.hide)
-            .on("click", props.selectPokemon)
 
         this.xAxis = this.svg.append("g")
             .attr("class", "xAxis")
@@ -102,12 +100,12 @@ class D3ScatterplotComponent {
             .style("display", function(d) {
                 let condition = true;
                 if (props.includedTypes.length === 2) {
-                    condition = props.includedTypes.includes(d.type_1) && props.includedTypes.includes(d.type_2);
+                    condition = props.includedTypes.includes(d.type1) && props.includedTypes.includes(d.type2);
                 } else if (props.includedTypes.length === 1) {
-                    condition = props.includedTypes.includes(d.type_1) || props.includedTypes.includes(d.type_2);
+                    condition = props.includedTypes.includes(d.type1) || props.includedTypes.includes(d.type2);
                 }
                 if (props.oneType === true) {
-                    condition = condition && d.type_2 === "None";
+                    condition = condition && d.type2 === null;
                 }
                 return condition ? "block" : "none";
             })

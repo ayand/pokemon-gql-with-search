@@ -18,9 +18,13 @@ class PokemonApp extends React.Component {
         return (
             <div>
                 <div className="row">
-                    <div style={{ textAlign: 'center' }} className="col-lg-12">
+                    <div style={{ textAlign: 'center' }} className="col-lg-6">
                         <h2 >Bar Chart</h2>
                         <BarChart />
+                    </div>
+                    <div style={{ textAlign: 'center' }} className="col-lg-6">
+                        <h2>Scatterplot</h2>
+                        <Scatterplot/>
                     </div>
                 </div>
             </div>
