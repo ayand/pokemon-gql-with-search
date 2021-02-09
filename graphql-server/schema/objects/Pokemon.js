@@ -18,18 +18,30 @@ module.exports.Pokemon = new GraphQLObjectType({
       const {SpeciesContainer} = require('./SpeciesContainer');
       const {PokemonStatContainer} = require('./PokemonStatContainer');
       const {PokemonTypeContainer} = require('./PokemonTypeContainer');
-      const {PokemonMoveContainer} = require('./PokemonMoveContainer')
+      const {PokemonMoveContainer} = require('./PokemonMoveContainer');
+      const {VersionGameIndex} = require('./VersionGameIndex');
+      const {PokemonLocationArea} = require('./PokemonLocationArea');
 
-      const PokemonService = require('../../services/pokemon');
-      const SpeciesService = require('../../services/species');
+      const PokemonLocationAreaService = require('../../services/pokemonLocationArea');
 
       return {
           abilities: { type: new GraphQLList(PokemonAbilityContainer) },
           base_experience: { type: GraphQLInt },
           forms: { type: new GraphQLList(PokemonFormContainer) },
-          height: { type: GraphQLFloat },
+          game_indices: { type: new GraphQLList(VersionGameIndex) },
+          height: { type: GraphQLInt },
           id: { type: GraphQLID },
           is_default: { type: GraphQLBoolean },
+          location_area_encounters: {
+              type: new GraphQLList(PokemonLocationArea),
+              resolve(parentValue) {
+                  const url = parentValue.location_area_encounters;
+                  const parts = url.split("/");
+                  const index = parts.length - 2;
+                  console.log(parts[index]);
+                  return PokemonLocationAreaService.getPokemonLocationAreas(parts[index]);
+              }
+          },
           moves: { type: new GraphQLList(PokemonMoveContainer) },
           name: {
             type: GraphQLString,
@@ -56,7 +68,7 @@ module.exports.Pokemon = new GraphQLObjectType({
               type: new GraphQLList(PokemonStatContainer)
           },
           types: { type: new GraphQLList(PokemonTypeContainer) },
-          weight: { type: GraphQLFloat }
+          weight: { type: GraphQLInt }
       }
     }
 });

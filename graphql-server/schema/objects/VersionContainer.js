@@ -10,11 +10,11 @@ const {
     GraphQLFloat
 } = graphql;
 
-module.exports.LocationContainer = new GraphQLObjectType({
-    name: 'LocationContainer',
+module.exports.VersionContainer = new GraphQLObjectType({
+    name: 'VersionContainer',
     fields: () => {
-      const {Location} = require('./Location');
-      const LocationService = require('../../services/location');
+      const {Version} = require('./Version');
+      const VersionService = require('../../services/version');
 
       return {
           id: {
@@ -32,14 +32,13 @@ module.exports.LocationContainer = new GraphQLObjectType({
                   return parentValue.name.toUpperCase().replace(/-/g, " ");
               }
           },
-          location: {
-              type: Location,
+          version: {
+              type: Version,
               resolve(parentValue) {
-                  console.log(parentValue)
                   const url = parentValue.url;
                   const components = url.split("/");
                   const id = components[components.length - 2];
-                  return LocationService.getLocation(id);
+                  return VersionService.getVersion(id);
               }
           }
       }

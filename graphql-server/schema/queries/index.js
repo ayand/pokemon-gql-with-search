@@ -11,6 +11,7 @@ const { region } = require('./region');
 const { location } = require('./location');
 const { moveLearnMethod } = require('./moveLearnMethod');
 const { stat } = require('./stat');
+const { version } = require('./version');
 
 const RootQueryType = new GraphQLObjectType({
     name: 'RootQuery',
@@ -26,7 +27,8 @@ const RootQueryType = new GraphQLObjectType({
         region,
         location,
         moveLearnMethod,
-        stat
+        stat,
+        version
     })
 });
 
